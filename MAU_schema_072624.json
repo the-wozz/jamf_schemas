@@ -16,9 +16,9 @@
     "HowToCheck": {
         "property_order": 20,
         "title": "How to 'Check for Updates'",
-        "description": "Specifies how Microsoft AutoUpdate checks for updates.",
+        "description": "Specifies how Microsoft AutoUpdate checks for updates. * Setting to Manual will STOP ALL UPDATES EXCPET MAU itself! Useful for a 'STOP ALL PATCHING' scenario. *",
         "type": "string",
-        "enum": ["AutomaticDownload", "AutomaticCheck"],
+        "enum": ["AutomaticDownload", "AutomaticCheck", "Manual"],
         "default": "AutomaticDownload"
 
     },

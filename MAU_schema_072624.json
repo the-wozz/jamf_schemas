@@ -1,323 +1,348 @@
 {
-
-"title": "Microsoft Auto Update 4.7x (com.microsoft.autoupdate2)",
-"description": "Schema preference settings for Microsoft Auto Update (and related products). Last updated: 7/26/24. Created by Zachary 'Woz'nicki. Latest version available here: https://github.com/the-wozz",
-"properties": {
-
-    "AcknowledgedDataCollectionPolicy": {
-        "property_order": 10,
-        "title": "Acknowledge Data Collection Policy",
-        "description": "Stores user's choice on data collection policy acknowledgment. This policy helps ensure that users are aware of the data collection policies in place.",
-        "type": "string",
-        "enum": ["RequiredDataOnly"],
-        "default": "RequiredDataOnly"
-    },
-
-    "HowToCheck": {
-        "property_order": 20,
-        "title": "How to 'Check for Updates'",
-        "description": "Specifies how Microsoft AutoUpdate checks for updates. * Setting to Manual will STOP ALL UPDATES EXCPET MAU itself! Useful for a 'STOP ALL PATCHING' scenario. *",
-        "type": "string",
-        "enum": ["AutomaticDownload", "AutomaticCheck", "Manual"],
-        "default": "AutomaticDownload"
-
-    },
-
-    "ChannelName": {
-        "property_order": 30,
-        "title": "Channel Name",
-        "description": "Specifies which update channel Microsoft AutoUpdate receives updates from.",
-        "type": "string",
-        "enum": ["Beta", "Current", "CurrentThrottle", "Custom", "Preview"],
-        "default": "Current"
-    },
-
-    "StartDaemonOnAppLaunch": {
-        "property_order": 40,
-        "title": "Start Daemon On App Launch",
-        "description": "Start Microsoft Auto Update Daemon upon launching a Microsoft product supported by MAU.",
-        "type": "boolean",
-        "default": true
-
-    },
-
-    "UpdateCheckInterval": {
-        "property_order": 50,
-        "title": "Update Check Interval",
-        "description": "Specifies the number of minutes between checking for updates. Default is set to check every 13 hours.",
-        "type": "integer",
-        "default": "780"
-    },
-
-    "EnableCheckForUpdatesButton": {
-        "property_order": 60,
-        "title": "Enable 'Check for Updates' button.",
-        "description": "When set to FALSE, this disables the option to initiate a check for updates from the MAU GUI.",
-        "type": "boolean",
-        "default": true
-    },
-
-    "OptionalUpdatesDeferralsDays": {
-        "property_order": 0,
-        "title": "Deferral Days for 'Optional' Updates",
-        "description": "Critical and security updates are installed automatically. This defines the number of days to wait to offer/install updates after an update is released. <br>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-deferred-updates",
-        "type": "integer",
-        "default": "28"
-    },
-
-    "UpdaterOptimization": {
-        "property_order": 0,
-        "title": "Update Optimization Technique",
-        "description": "Determines whether to optimize for smaller download size (default) or faster background install times for Office App Updates.",
-        "type": "string",
-        "enum": ["Size", "Network", "CPU", "None"],
-        "default": "CPU"
-    },
-
-    "GuardAgainstAppModification": {
-        "property_order": 0,
-        "title": "Guard Against Application Modification",
-        "description": "Setting this preference to TRUE keeps a clone of an application in cache location always.<br> Needed as some security apps were modifying installed apps under /Applications folder, causing updates to fail.",
-        "type": "boolean",
-        "default": false
-    },
-
-    "UpdateReadyReminderIntervalInHours": {
-        "property_order": 0,
-        "title": "Update Ready Reminder Interval (In Hours)",
-        "description": "Used by Microsoft 365 apps in determining how frequently update ready message bar should be displayed. Unit is hours. Update ready reminder can be ignored for a maximum of seven days.",
-        "type": "integer",
-        "default": 168
-    },
-
-    "ExtendedLogging": {
-        "property_order": 0,
-        "title": "Extended Logging",
-        "description": "If set to TRUE, causes verbose logging to be output to MAU log file.",
-        "type": "boolean",
-        "default": false
-    },
-
-    "DisableInsiderCheckbox": {
-        "property_order": 0,
-        "title": "Disable Insider Checkbox",
-        "description": "When set to TRUE, this is used to disable the pulldown menu to select Beta/Preview channels.",
-        "type": "boolean",
-        "default": true
-    },
-
-    "DisableEndOfSupportNotifications": {
-        "property_order": 0,
-        "title": "Disable End of Support Notifications",
-        "description": "When set to TRUE, disables notifications regarding the end of support for the Office suite.",
-        "type": "boolean",
-        "default": true
-    },
-
-    "Applications": {
-        "title": "Applications",
-        "description": "Microsoft Office Suite applications to monitor for Microsoft Auto Update (MAU)",
-        "property_order": "1000",
+    "title": "Microsoft Auto Update 4.7x (com.microsoft.autoupdate2)",
+    "description": "Schema preference settings for Microsoft Auto Update (and related products). Last updated: 7/26/24. Created by Zachary 'Woz'nicki. Latest version available here: https://github.com/the-wozz",
         "properties": {
-            "/Applications/Microsoft Excel.app": {
-            "title": "Excel",
-            "properties": {
-                "Application ID": {
-            "type": "string",
-            "default": "XCEL2019"
-            },
-                "Install Priority": {
-            "type": "string" 
-            },
-            "App Domain": {
+            "AcknowledgedDataCollectionPolicy": {
+                "property_order": 10,
+                "title": "Acknowledge Data Collection Policy",
+                "description": "Stores user's choice on data collection policy acknowledgment. This policy helps ensure that users are aware of the data collection policies in place.",
                 "type": "string",
-                "default": "com.microsoft.office"
-                }
-                          }
+                "enum": ["RequiredDataOnly"],
+                "default": "RequiredDataOnly"
             },
-            "/Applications/Microsoft Outlook.app": {
-                "title": "Outlook",
-                "properties": {
-                    "Application ID": {
+            "IgnoreUIOpenAfterInstall": {
+                "property_order": 20,
+                "title": "Ignore UI Open After Install",
+                "description": "Determines whether to launch MAU GUI after MAU install/update. This is useful if IT Admin does not want users to see MAU GUI after an update.",
+                "type": "boolean",
+                "default": true
+            },
+            "HowToCheck": {
+                "property_order": 20,
+                "title": "How to 'Check for Updates'",
+                "description": "Specifies how Microsoft AutoUpdate checks for updates.",
                 "type": "string",
-                "default": "OPIM2019"
-                },
-                    "Install Priority": {
-                "type": "string" 
-                },
-                "App Domain": {
-                    "type": "string",
-                    "default": "com.microsoft.office"
-                    }
-                              }
-                },
-                "/Applications/Microsoft Word.app": {
-                    "title": "Word",
+                "enum": ["AutomaticDownload", "AutomaticCheck", "Manual"],
+                "default": "AutomaticDownload"
+            },
+            "ChannelName": {
+                "property_order": 30,
+                "title": "Channel Name",
+                "description": "Specifies which update channel Microsoft AutoUpdate receives updates from. \n <a href='https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-preferences'>MORE INFO</a>",
+                "type": "string",
+                "enum": ["Beta", "Current", "CurrentThrottle", "Custom", "Preview"],
+                "default": "Current"
+            },
+            "StartDaemonOnAppLaunch": {
+                "property_order": 40,
+                "title": "Start Daemon On App Launch",
+                "description": "Start Microsoft Auto Update Daemon upon launching a Microsoft product supported by MAU.",
+                "type": "boolean",
+                "default": true
+            },
+            "UpdateCheckInterval": {
+                "property_order": 50,
+                "title": "Update Check Interval",
+                "description": "Specifies the number of minutes between checking for updates. Default is set to check every 13 hours.",
+                "type": "integer",
+                "default": "780"
+            },
+            "EnableCheckForUpdatesButton": {
+                "property_order": 60,
+                "title": "Enable 'Check for Updates' button.",
+                "description": "When set to FALSE, this disables the option to initiate a check for updates from the MAU GUI.",
+                "type": "boolean",
+                "default": true
+            },
+            "OptionalUpdatesDeferralsDays": {
+                "property_order": 0,
+                "title": "Deferral Days for 'Optional' Updates",
+                "description": "Critical and security updates are installed automatically. This defines the number of days to wait to offer/install updates after an update is released. <br>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-deferred-updates",
+                "type": "integer",
+                "default": "28"
+            },
+            "UpdaterOptimization": {
+                "property_order": 0,
+                "title": "Update Optimization Technique",
+                "description": "Determines whether to optimize for smaller download size (default) or faster background install times for Office App Updates.",
+                "type": "string",
+                "enum": ["Size", "Network", "CPU", "None"],
+                "default": "CPU"
+            },
+            "GuardAgainstAppModification": {
+                "property_order": 0,
+                "title": "Guard Against Application Modification",
+                "description": "Setting this preference to TRUE keeps a clone of an application in cache location always.<br> Needed as some security apps were modifying installed apps under /Applications folder, causing updates to fail.",
+                "type": "boolean",
+                "default": false
+            },
+            "UpdateReadyReminderIntervalInHours": {
+                "property_order": 0,
+                "title": "Update Ready Reminder Interval (In Hours)",
+                "description": "Used by Microsoft 365 apps in determining how frequently update ready message bar should be displayed. Unit is hours. Update ready reminder can be ignored for a maximum of seven days.",
+                "type": "integer",
+                "default": 168
+            },
+            "ExtendedLogging": {
+                "property_order": 100,
+                "title": "Extended Logging",
+                "description": "If set to TRUE, causes verbose logging to be output to MAU log file.",
+                "type": "boolean",
+                "default": false
+            },
+            "DisableInsiderCheckbox": {
+                "property_order": 0,
+                "title": "Disable Insider Checkbox",
+                "description": "When set to TRUE, this is used to disable the pulldown menu to select Beta/Preview channels.",
+                "type": "boolean",
+                "default": true
+            },
+            "DisableEndOfSupportNotifications": {
+                "property_order": 0,
+                "title": "Disable End of Support Notifications",
+                "description": "When set to TRUE, disables notifications regarding the end of support for the Office suite.",
+                "type": "boolean",
+                "default": true
+            },
+            "Applications": {
+                "title": "Applications",
+                "description": "Microsoft Office Suite applications (+ others!) to monitor for Microsoft Auto Update (MAU).",
+                "property_order": "1000",
                     "properties": {
-                        "Application ID": {
-                    "type": "string",
-                    "default": "MSWD2019"
-                    },
-                        "Install Priority": {
-                    "type": "string"
-                    },
-                    "App Domain": {
-                        "type": "string",
-                        "default": "com.microsoft.office"
-                        }
-                                  }
-                    },
-                "/Applications/Microsoft PowerPoint.app": {
-                    "title": "Word",
-                    "properties": {
-                        "Application ID": {
-                    "type": "string",
-                    "default": "PPT32019"
-                    },
-                        "Install Priority": {
-                    "type": "string"
-                    },
-                    "App Domain": {
-                        "type": "string",
-                        "default": "com.microsoft.office"
-                        }
-                                }
-                    },
-        "/Applications/Microsoft OneNote.app": {
-            "title": "OneNote",
-            "properties": {
-                "Application ID": {
-            "type": "string",
-            "default": "ONMC2019"
-            },
-                "Install Priority": {
-            "type": "string"
-            },
-            "App Domain": {
-                "type": "string",
-                "default": "com.microsoft.office"
-                }
-                        }
-            },
-            "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app": {
-                "title": "MAU",
-                "properties": {
-                    "Application ID": {
-                "type": "string",
-                "default": "MSau04"
-                },
-                    "Install Priority": {
-                "type": "string",
-                "default": "High"
-                },
-                "App Domain": {
-                    "type": "string",
-                    "default": "com.microsoft.office"
-                    }
-                            }
-                },
-            "/Applications/OneDrive.app": {
-                "title": "OneDrive",
-                "properties": {
-                    "Application ID": {
-                "type": "string",
-                "default": "ONDR18"
-                },
-                    "Install Priority": {
-                "type": "string"
-                },
-                "App Domain": {
-                    "type": "string",
-                    "default": "com.microsoft.office"
-                    }
-                            }
-                },
-            "/Applications/Company Portal.app": {
-                "title": "Company Portal",
-                "properties": {
-                    "Application ID": {
-                "type": "string",
-                "default": "IMCP01"
-                },
-                    "Install Priority": {
-                "type": "string",
-                "default": "High"
-                },
-                "App Domain": {
-                    "type": "string",
-                    "default": "com.microsoft.office"
-                    }
-                            }
-                },
-                "/Applications/Microsoft Teams.app": {
-                    "title": "Teams (New)",
-                    "properties": {
-                        "Application ID": {
-                    "type": "string",
-                    "default": "TEAMS21"
-                    },
-                        "Install Priority": {
-                    "type": "string",
-                    "default": "High"
-                    },
-                    "App Domain": {
-                        "type": "string",
-                        "default": "com.microsoft.office"
-                        }
-                                }
-                    },
-                    "Applications/Skype for Business.app": {
-                        "title": "Skype (for Business)",
-                        "properties": {
-                            "Application ID": {
-                        "type": "string",
-                        "default": "MSFB16"
-                        },
-                            "Install Priority": {
-                        "type": "string",
-                        "default": ""
-                        },
-                        "App Domain": {
-                            "type": "string",
-                            "default": "com.microsoft.office"
-                            }
-                                    }
-                        },
-                        "/Applications/Microsoft Remote Desktop.app": {
-                            "title": "Remote Desktop",
+                        "/Applications/Microsoft Excel.app": {
+                        "title": "Excel",
+                        "property_order": 60,
                             "properties": {
                                 "Application ID": {
-                            "type": "string",
-                            "default": "MSRD10"
-                            },
-                                "Install Priority": {
-                            "type": "string",
-                            "default": ""
-                            },
-                            "App Domain": {
-                                "type": "string",
-                                "default": "com.microsoft.office"
-                                }
-                                        }
-                            },
-                            "/Applications/Microsoft Defender.app": {
-                                "title": "Remote Desktop",
-                                "properties": {
-                                    "Application ID": {
-                                "type": "string",
-                                "default": "WDAV00"
+                                    "type": "string",
+                                    "default": "XCEL2019",
+                                    "readonly": true
                                 },
-                                    "Install Priority": {
-                                "type": "string",
-                                "default": "High"
+                                "Install Priority": {
+                                    "type": "string" 
                                 },
                                 "App Domain": {
                                     "type": "string",
-                                    "default": "com.microsoft.office"
+                                    "default": "com.microsoft.office",
+                                    "readonly": true
+                                }
+                                        }
+                        },
+                        "/Applications/Microsoft Outlook.app": {
+                            "title": "Outlook",
+                            "property_order": 40,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "OPIM2019",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string" 
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    }
+                                        }
+                        },
+                        "/Applications/Microsoft Word.app": {
+                            "title": "Word",
+                            "property_order": 70,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "MSWD2019",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string"
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    }
+                                        }
+                        },
+                        "/Applications/Microsoft PowerPoint.app": {
+                            "title": "PowerPoint",
+                            "property_order": 80,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "PPT32019",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string"
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
                                     }
                                             }
-                                }
+                        },
+                        "/Applications/Microsoft OneNote.app": {
+                            "title": "OneNote",
+                            "property_order": 90,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "ONMC2019",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string"
+                                    }
+                                            }
+                        },
+                        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app": {
+                            "title": "MAU",
+                            "property_order": 10,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "MSau04",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string",
+                                        "default": "High"
+                                    }
+                                            }
+                        },
+                        "/Applications/OneDrive.app": {
+                            "title": "OneDrive",
+                            "property_order": 50,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "ONDR18",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string"
+                                    }
+                                            }
+                        },
+                        "/Applications/Company Portal.app": {
+                            "title": "Company Portal",
+                            "property_order": 30,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "IMCP01",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string",
+                                        "default": "High"
+                                    }
+                                            }
+                        },
+                        "/Applications/Microsoft Teams.app": {
+                            "title": "Teams (New)",
+                            "property_order": 20,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "TEAMS21",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string",
+                                        "default": "High"
+                                    }
+                                            }
+                        },
+                        "Applications/Skype for Business.app": {
+                            "title": "Skype (for Business)",
+                            "property_order": 150,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "MSFB16",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string",
+                                        "default": ""
+                                    }
+                                            }
+                        },
+                        "/Applications/Microsoft Remote Desktop.app": {
+                            "title": "Remote Desktop",
+                            "property_order": 110,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "MSRD10",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string"
+                                    }
+                                            }
+                        },
+                        "/Applications/Microsoft Defender.app": {
+                            "title": "Defender",
+                            "property_order": 10,
+                                "properties": {
+                                    "Application ID": {
+                                        "type": "string",
+                                        "default": "WDAV00",
+                                        "readonly": true
+                                    },
+                                    "App Domain": {
+                                        "type": "string",
+                                        "default": "com.microsoft.office",
+                                        "readonly": true
+                                    },
+                                    "Install Priority": {
+                                        "type": "string",
+                                        "default": "High"
+                                    }
+                                            }
+                        }
+                }
+            }
         }
-    }
-}
 }

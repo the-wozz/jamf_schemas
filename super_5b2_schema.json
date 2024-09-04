@@ -417,7 +417,7 @@
       "default": "true"
     },
     "WorkflowInstallNow": {
-        "title": "Ask User to Save Password",
+        "title": "'Install Now' Workflow",
         "description": "This allows you to once again define a 'permanent' install now workflow behavior. ",
         "type": "boolean",
         "default": "false"

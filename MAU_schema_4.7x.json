@@ -1,11 +1,11 @@
 {
     "title": "Microsoft Auto Update 4.7x (com.microsoft.autoupdate2)",
-    "description": "Schema preference settings for Microsoft Auto Update (and related products). Last updated: 7/26/24. Created by Zachary 'Woz'nicki. Latest version available here: https://github.com/the-wozz",
+    "description": "Schema preference settings for Microsoft Auto Update [MAU] (and related products). All keys updated as of: 9/13/24. Modified by Zachary 'Woz'nicki. Latest version available here: https://github.com/the-wozz<br>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-preferences",
         "properties": {
             "AcknowledgedDataCollectionPolicy": {
                 "property_order": 10,
                 "title": "Acknowledge Data Collection Policy",
-                "description": "Stores user's choice on data collection policy acknowledgment. This policy helps ensure that users are aware of the data collection policies in place.",
+                "description": "Stores user's choice on data collection policy acknowledgment. This policy helps ensure that users are aware of the data collection policies in place. Not setting or incorrectly setting this preference leads to Microsoft AutoUpdate (MAU): - Repeatedly showing Data Collection policy. - Not offering updates.",
                 "type": "string",
                 "enum": ["RequiredDataOnly"],
                 "default": "RequiredDataOnly"
@@ -20,7 +20,7 @@
             "HowToCheck": {
                 "property_order": 20,
                 "title": "How to 'Check for Updates'",
-                "description": "Specifies how Microsoft AutoUpdate checks for updates.",
+                "description": "Specifies how Microsoft AutoUpdate checks for updates. Setting to Manual results in MAU not offering updates automatically.",
                 "type": "string",
                 "enum": ["AutomaticDownload", "AutomaticCheck", "Manual"],
                 "default": "AutomaticDownload"
@@ -43,7 +43,7 @@
             "UpdateCheckInterval": {
                 "property_order": 50,
                 "title": "Update Check Interval",
-                "description": "Specifies the number of minutes between checking for updates. Default is set to check every 13 hours.",
+                "description": "Specifies the number of minutes between checking for updates. Default is set to check every 13 hours. We recommend this number be a multiple of 60 (one hour). Suggest not exceeding 4320 (three days).",
                 "type": "integer",
                 "default": "780"
             },
@@ -51,6 +51,13 @@
                 "property_order": 60,
                 "title": "Enable 'Check for Updates' button.",
                 "description": "When set to FALSE, this disables the option to initiate a check for updates from the MAU GUI.",
+                "type": "boolean",
+                "default": true
+            },
+            "DisableOptInNotification": {
+                "property_order": 70,
+                "title": "Disable MAU Notification & Pop-up Window",
+                "description": "Prevents Opt-In notification/pop-up window from showing even when HowToCheck is set to Automatic. This notification is ignored if the HowToCheck setting isn't Automatic.",
                 "type": "boolean",
                 "default": true
             },
@@ -72,7 +79,7 @@
             "GuardAgainstAppModification": {
                 "property_order": 0,
                 "title": "Guard Against Application Modification",
-                "description": "Setting this preference to TRUE keeps a clone of an application in cache location always.<br> Needed as some security apps were modifying installed apps under /Applications folder, causing updates to fail.",
+                "description": "Setting this preference to TRUE keeps a clone of an application in cache location always.<br> Needed as some security apps were modifying installed apps under /Applications folder, causing updates to fail. Use this preference if your organization uses a security app that modifies installed apps.",
                 "type": "boolean",
                 "default": false
             },
@@ -82,6 +89,27 @@
                 "description": "Used by Microsoft 365 apps in determining how frequently update ready message bar should be displayed. Unit is hours. Update ready reminder can be ignored for a maximum of seven days.",
                 "type": "integer",
                 "default": 168
+            },
+            "UpdateDeadline.DaysBeforeForcedQuit": {
+                "property_order": 0,
+                "title": "Days Before Forced Quit",
+                "description": "MAU is calculating deadline dates based on the day updates are found on that device. Not from when Microsoft released the patches. Starting from StartAutomaticUpdates number of days before deadline is reached, there will be a prompt displayed to user every 12 hours.",
+                "type": "integer",
+                "default": 7
+            },
+            "UpdateDeadline.FinalCountDown": {
+                "property_order": 0,
+                "title": "Final Count Down Prompt",
+                "description": "Starting from the FinalCountDown, the number of minutes before the deadline, MAU displays a prompt to the user each time it runs. Applications automatically close once the countdown is reached.",
+                "type": "integer",
+                "default": 60
+            },
+            "UpdateDeadline.StartAutomaticUpdates": {
+                "property_order": 0,
+                "title": "Final Count Down Prompt",
+                "description": "Number of days before forced update date that MAU treats every update as AutomaticDownload. Using this preference setting enables Automatic Download and Install mode for MAU regardless of the current MAU HowToCheck setting on the device. After the deadline is reached, MAU will revert to the previous setting on the device. Value less than three is treated as three. Value can't be bigger than DaysBeforeForcedQuit.",
+                "type": "integer",
+                "default": 3
             },
             "ExtendedLogging": {
                 "property_order": 100,

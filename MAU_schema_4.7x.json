@@ -45,7 +45,7 @@
                 "title": "Update Check Interval",
                 "description": "Specifies the number of minutes between checking for updates. Default is set to check every 13 hours. We recommend this number be a multiple of 60 (one hour). Suggest not exceeding 4320 (three days).",
                 "type": "integer",
-                "default": "780"
+                "default": 780
             },
             "EnableCheckForUpdatesButton": {
                 "property_order": 60,
@@ -66,7 +66,7 @@
                 "title": "Deferral Days for 'Optional' Updates",
                 "description": "Critical and security updates are installed automatically. This defines the number of days to wait to offer/install updates after an update is released. <br>https://learn.microsoft.com/en-us/microsoft-365-apps/mac/mau-deferred-updates",
                 "type": "integer",
-                "default": "28"
+                "default": 28
             },
             "UpdaterOptimization": {
                 "property_order": 0,

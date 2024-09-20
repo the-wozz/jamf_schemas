@@ -8,7 +8,8 @@
                 "description": "Stores user's choice on data collection policy acknowledgment. This policy helps ensure that users are aware of the data collection policies in place. Not setting or incorrectly setting this preference leads to Microsoft AutoUpdate (MAU): - Repeatedly showing Data Collection policy. - Not offering updates.",
                 "type": "string",
                 "enum": ["RequiredDataOnly"],
-                "default": "RequiredDataOnly"
+                "default": "RequiredDataOnly",
+                "readonly": true
             },
             "IgnoreUIOpenAfterInstall": {
                 "property_order": 20,
@@ -110,6 +111,17 @@
                 "description": "Number of days before forced update date that MAU treats every update as AutomaticDownload. Using this preference setting enables Automatic Download and Install mode for MAU regardless of the current MAU HowToCheck setting on the device. After the deadline is reached, MAU will revert to the previous setting on the device. Value less than three is treated as three. Value can't be bigger than DaysBeforeForcedQuit.",
                 "type": "integer",
                 "default": 3
+            },
+            "UpdateDeadline.DialogTitle": {
+                "property_order": 0,
+                "title": "Forced Update Deadline Window Title",
+                "description": "Custom title to be used for showing Forced Update dialogs. Default: Your admin has setup a deadline for the updates.",
+                "type": "string",
+                      "options": {
+                        "inputAttributes": {
+                        "placeholder": "Your admin has setup a deadline for the updates."
+                }
+              }
             },
             "ExtendedLogging": {
                 "property_order": 100,

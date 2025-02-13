@@ -1,0 +1,160 @@
+{
+    "title": "Renew by SecondSonConsulting (com.secondsonconsulting.renew)",
+    "description": "Renew Jamf Pro Schema by Zachary 'Woz'nicki. Date: 2/13/25. Latest version available here: https://github.com/the-wozz<br>Renew script: https://github.com/SecondSonConsulting/Renew",
+        "properties": {
+                "MaximumDeferrals": {
+                "property_order": 0,
+                "title": "Maximum Deferrals",
+                "description": "This is the maximum number of deferrals a user receives before Renew enters 'Aggressive' mode. Please note that 'Notifications' count toward the MaxmimumDeferrals amount even though the user does not interact with them. Setting this to a value of -1 disables deferrals. Use this in combination with the Deadline optional argument or if you never want your user to get an Aggressive Mode message.",
+                "type": "integer",
+                "default": "4"
+            },
+            "UptimeThreshold": {
+                "property_order": 0,
+                "title": "Uptime Threshold",
+                "description": "The number of days which a device is online prior to the Renew experience starting. Devices were last powered on fewer than UptimeThreshold days will not receive notifications.",
+                "type": "integer",
+                "default": ""
+            },
+            "NotificationThreshold": {
+                "property_order": 0,
+                "title": "Notification Threshold",
+                "description": "The number of times the user will get a macOS Notification Center event prior to the full Swift Dialog experience. Example: If a device is is past the uptime threshold and not within a deferral timeframe, they will be first notified via a notification center event. Renew processes this as a deferral, and exits after sending the notification. A value of -1 sets the Notification Threshold to infinite. Use this if you never want your user to get a Normal Mode dialog event. This is also supported to use in combination with the Deadline Optional Argument.",
+                "type": "integer",
+                "default": "2"
+            },
+            "DeferralDuration": {
+                "property_order": 0,
+                "title": "Deferral Duration",
+                "description": "The minimum number of hours between when a user is notified that they need to restart. This is clocked in calendar time, not device uptime. Example: A user receives a notification center event from Renew. If this value is set to 4, then the user will not receive another Renew event until that 4 hour duration has passed (regardless if the script runs again via LaunchAgent or otherwise).",
+                "type": "integer",
+                "default": "8"
+            },
+                "Title": {
+                "property_order": 10,
+                "title": "Notification Title",
+                "description": "The title of the Swift Dialog message window.",
+                "type": "string",
+                "default": "Please Restart"
+            },
+                "AggroMessage": {
+                "property_order": 10,
+                "title": "Aggressive Notification Text",
+                "description": "Messaging for the 'aggressive' notification.",
+                "type": "string",
+                "default": "**Please save your work and restart**"
+            },
+                "NormalMessage": {
+                "property_order": 0,
+                "title": "Normal Message Body Text",
+                "description": "The body of the Swift Dialog window.",
+                "type": "string",
+                "default": "In order to keep your system healthy and secure it needs to be restarted. \n**Please save your work** and restart as soon as possible.\n\nDeferrals remaining until required restart: "
+            },
+                "NotificationMessage": {
+                "property_order": 0,
+                "title": "Notification Message Text",
+                "description": "The text you want to display in the main body of a Notification Center event.",
+                "type": "string",
+                "default": "In order to keep your system healthy and secure it needs to be restarted. \nPlease save your work and restart as soon as possible."
+            },
+                "DeferralButtonText": {
+                "property_order": 0,
+                "title": "Deferral Button Text",
+                "description": "The text on the primary button which dismisses the Dialog window and processes a deferral.",
+                "type": "string",
+                "default": "Not now, remind me later..."
+            },
+                "NoDeferralsRemainingButtonText": {
+                "property_order": 0,
+                "title": "No Deferrals Remaining Button Text",
+                "description": "The text on the primary button when in aggressive mode and no deferrals remain.",
+                "type": "string",
+                "default": "No deferrals remaining"
+            },
+                "RestartButtonText": {
+                "property_order": 0,
+                "title": "Restart Button Text",
+                "description": "The text on the 'info button' which the user clicks to initiate a restart.",
+                "type": "string",
+                "default": "OK, Restart Now I am Ready"
+            },
+                "ShowDeferralCount": {
+                "property_order": 0,
+                "title": "Show Deferral Count",
+                "description": "If true, an additional line of text is added in Normal Mode indicating how many deferrals are remaining.",
+                "type": "boolean",
+                "default": false
+            },
+                "NotificationIcon": {
+                "property_order": 80,
+                "title": "Notification Icon",
+                "description": "Path to an icon you would like included in the Notification Center message.",
+                "type": "string",
+                "default": ""
+            },
+                "MessageIcon": {
+                "property_order": 0,
+                "title": "Swift Dialog Message Icon",
+                "description": "Path to the icon which will be used for Renew Swift Dialog windows.",
+                "type": "string",
+                "default": ""
+            },
+                "BannerImage": {
+                "property_order": 0,
+                "title": "Banner Image",
+                "description": "Path to a file used with the --bannerimage SwiftDialog option.",
+                "type": "string",
+                "default": ""
+            },
+                "AdditionalDialogOptions": {
+                "property_order": 0,
+                "title": "Additional Swift Dialog Options/Arguments",
+                "description": "For best results, do not pass options here which are provided as features of Renew (like --icon and --title).",
+                "type": "string",
+                "default": ""
+            },
+                "AdditionalAggressiveOptions": {
+                "property_order": 0,
+                "title": "Additional Aggressive Options",
+                "description": "Any additional Swift Dialog options which you want only to apply to Aggressive Mode dialog windows.<br>For best results, do not pass options here which are provided as features of Renew (like --icon and --title)<br>Do not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
+                "type": "string",
+                "default": ""
+            },
+                "AdditionalNormalOptions": {
+                "property_order": 0,
+                "title": "Additional Normal Options",
+                "description": "Any additional Swift Dialog options which you want only to apply to Normal Mode dialog windows.<br>For best results, do not pass options here which are provided as features of Renew (like --icon and --title)<br>Do not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
+                "type": "string",
+                "default": ""
+            },
+                "Deadline": {
+                "property_order": 0,
+                "title": "Deadline",
+                "description": "This key will set a Deadline for uptime (in days) such that when a device has been online for this many days they will receive the Aggressive Mode experience regardless of any remaining deferrals.",
+                "type": "integer",
+                "default": ""
+            },
+                "SecretQuitKey": {
+                "property_order": 0,
+                "title": "Secret Quit Key",
+                "description": "By default, Swift Dialog can be quit using the CMD+Q option. This is undesirable for our purposes, and so a 'secret quit key' is set by default and can be changed in the configuration file. This must be a single character, and cannot be a capital letter or symbol requiring the shift key.",
+                "type": "string",
+                "default": "]"
+            },
+                "IgnoreAssertions": {
+                "property_order": 0,
+                "title": "Ignore Assertions",
+                "description": "Use this array to list additional applications which you want to ignore in regard to Display Sleep Assertions. Use pmset -g to see what Display Sleep Assertions are in place for a device and use the name of the application as found by that command.<br>Default value: Renew will ignore obs caffeinate and Amphetamine in addition to any options configured here.",
+                "type": "array",
+                "default": ""
+            },
+                "NotificationActionEnabled": {
+                "property_order": 0,
+                "title": "Ignore Assertions",
+                "description": "By default, clicking the body of a Swift Dialog notification center event will initiate a Restart sequence. To disable this behavior, set to false.",
+                "type": "boolean",
+                "default": "false"
+            }
+        }
+}

@@ -1,6 +1,6 @@
 {
     "title": "Renew by SecondSonConsulting (com.secondsonconsulting.renew)",
-    "description": "Renew Jamf Pro Schema by Zachary 'Woz'nicki. Date: 2/13/25. Latest version available here: https://github.com/the-wozz<br>Renew script: https://github.com/SecondSonConsulting/Renew",
+    "description": "Renew Jamf Pro Schema by Zachary 'Woz'nicki. Date: 2/13/25. Latest version available here: https://github.com/the-wozz \n Renew script: https://github.com/SecondSonConsulting/Renew",
         "properties": {
                 "MaximumDeferrals": {
                 "property_order": 0,
@@ -117,14 +117,14 @@
                 "AdditionalAggressiveOptions": {
                 "property_order": 0,
                 "title": "Additional Aggressive Options",
-                "description": "Any additional Swift Dialog options which you want only to apply to Aggressive Mode dialog windows.<br>For best results, do not pass options here which are provided as features of Renew (like --icon and --title)<br>Do not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
+                "description": "Any additional Swift Dialog options which you want only to apply to Aggressive Mode dialog windows.\nFor best results, do not pass options here which are provided as features of Renew (like --icon and --title)\nDo not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
                 "type": "string",
                 "default": ""
             },
                 "AdditionalNormalOptions": {
                 "property_order": 0,
                 "title": "Additional Normal Options",
-                "description": "Any additional Swift Dialog options which you want only to apply to Normal Mode dialog windows.<br>For best results, do not pass options here which are provided as features of Renew (like --icon and --title)<br>Do not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
+                "description": "Any additional Swift Dialog options which you want only to apply to Normal Mode dialog windows.\nFor best results, do not pass options here which are provided as features of Renew (like --icon and --title)\nDo not pass options which are also passed via AdditionalDialogOptions, this is considered an invalid configuration..",
                 "type": "string",
                 "default": ""
             },
@@ -145,7 +145,7 @@
                 "IgnoreAssertions": {
                 "property_order": 0,
                 "title": "Ignore Assertions",
-                "description": "Use this array to list additional applications which you want to ignore in regard to Display Sleep Assertions. Use pmset -g to see what Display Sleep Assertions are in place for a device and use the name of the application as found by that command.<br>Default value: Renew will ignore obs caffeinate and Amphetamine in addition to any options configured here.",
+                "description": "Use this array to list additional applications which you want to ignore in regard to Display Sleep Assertions. Use pmset -g to see what Display Sleep Assertions are in place for a device and use the name of the application as found by that command.\nDefault value: Renew will ignore obs caffeinate and Amphetamine in addition to any options configured here.",
                 "type": "array",
                 "default": ""
             },
